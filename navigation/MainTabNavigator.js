@@ -1,11 +1,17 @@
 import React from 'react';
 import { Platform } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import {
+  createDrawerNavigator,
+  createStackNavigator,
+  createBottomTabNavigator,
+} from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
+
+import DrawerOne from '../screens/DrawerOne';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
+import DrawerTwo from '../screens/DrawerTwo';
 import ScreenOne from '../screens/ScreenOne';
 import ScreenTwo from '../screens/ScreenTwo';
 import SettingsScreen from '../screens/SettingsScreen';
@@ -37,8 +43,17 @@ HomeStack.navigationOptions = {
   ),
 };
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
+const LinksStack = createDrawerNavigator({
+  DrawerOne: DrawerOne,
+  DrawerTwo: DrawerTwo,
+}, {
+  drawerWidth: 300,
+  drawerPosition: 'left',
+  drawerBackgroundColor: 'black',
+  contentOptions: {
+    activeTintColor: 'yellow',
+    inactiveTintColor: 'white',
+  },
 });
 
 LinksStack.navigationOptions = {
