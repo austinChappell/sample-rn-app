@@ -1,12 +1,29 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import { Button } from 'native-base';
+
+import styles from '../assets/styles';
 
 const ScreenOne = props => {
-  const { getParam } = props.navigation;
+  const {
+    getParam,
+    navigate,
+  } = props.navigation;
+  
   const message = getParam('message');
+  
   return (
-    <View>
+    <View style={styles.container}>
       <Text>{message}</Text>
+
+      <Button
+        style={styles.button}
+        onPress={() => navigate('ScreenTwo', { title: 'Screen Two' })}
+        block
+        danger
+      >
+        <Text>Screen Two</Text>
+      </Button>
     </View>
   )
 }

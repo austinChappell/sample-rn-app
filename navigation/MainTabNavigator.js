@@ -7,9 +7,11 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import ScreenOne from '../screens/ScreenOne';
+import ScreenTwo from '../screens/ScreenTwo';
 import SettingsScreen from '../screens/SettingsScreen';
 
 const navigationOptions = ({ navigation }) => {
+  const { goBack } = navigation;
   const { params } = navigation.state;
   const title = params ? params.title : null;
   return {
@@ -52,6 +54,7 @@ LinksStack.navigationOptions = {
 const SettingsStack = createStackNavigator({
   Settings: SettingsScreen,
   ScreenOne: ScreenOne,
+  ScreenTwo: ScreenTwo,
 }, {
   // navigationOptions: {
   //   title: 'Something',
