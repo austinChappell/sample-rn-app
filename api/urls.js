@@ -1,5 +1,3 @@
 export default {
-  getUsers: () => {
-    return 'https://randomuser.me/api/?results=50';
-  }
-}
+  getUsers: () => 'https://randomuser.me/api/?results=50',
+};

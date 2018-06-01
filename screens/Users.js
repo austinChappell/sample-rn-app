@@ -16,6 +16,7 @@ import styles from '../assets/styles';
 
 import mainAPI from '../api/main';
 import urls from '../api/urls';
+import Loader from '../components/Loader';
 
 const { get } = mainAPI;
 const { getUsers } = urls;
@@ -55,11 +56,7 @@ class Users extends Component {
     const { navigate } = this.props.navigation;
 
     if (!dataLoaded) {
-      return (
-        <View>
-          <Text>Loading</Text>
-        </View>
-      );
+      return <Loader />;
     }
 
     return (
