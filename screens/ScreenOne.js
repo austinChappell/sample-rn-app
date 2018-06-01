@@ -4,7 +4,7 @@ import { Button } from 'native-base';
 
 import styles from '../assets/styles';
 
-const ScreenOne = props => {
+const ScreenOne = (props) => {
   const {
     getParam,
     navigate,

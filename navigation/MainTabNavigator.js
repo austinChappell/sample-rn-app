@@ -9,12 +9,13 @@ import {
 
 import TabBarIcon from '../components/TabBarIcon';
 
-import DrawerOne from '../screens/DrawerOne';
+import Preferences from '../screens/Preferences';
 import HomeScreen from '../screens/HomeScreen';
-import DrawerTwo from '../screens/DrawerTwo';
+import Users from '../screens/Users';
 import ScreenOne from '../screens/ScreenOne';
 import ScreenTwo from '../screens/ScreenTwo';
 import SettingsScreen from '../screens/SettingsScreen';
+import UserProfile from '../screens/UserProfile';
 
 const navigationOptions = ({ navigation }) => {
   const { goBack } = navigation;
@@ -43,9 +44,16 @@ HomeStack.navigationOptions = {
   ),
 };
 
+const UserStack = createStackNavigator({
+  Users: Users,
+  UserProfile: UserProfile,
+}, {
+  navigationOptions,
+});
+
 const LinksStack = createDrawerNavigator({
-  DrawerOne: DrawerOne,
-  DrawerTwo: DrawerTwo,
+  'All Users': UserStack,
+  Preferences: Preferences,
 }, {
   drawerWidth: 300,
   drawerPosition: 'left',
