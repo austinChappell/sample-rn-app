@@ -9,7 +9,8 @@ import {
 
 import TabBarIcon from '../components/TabBarIcon';
 
-import Preferences from '../screens/Preferences';
+import Preference from '../screens/Preference';
+import Preferences from "../screens/Preferences";
 import HomeScreen from '../screens/HomeScreen';
 import Users from '../screens/Users';
 import ScreenOne from '../screens/ScreenOne';
@@ -51,18 +52,28 @@ const UserStack = createStackNavigator({
   navigationOptions,
 });
 
-const LinksStack = createDrawerNavigator({
-  'All Users': UserStack,
-  Preferences: Preferences,
+const PreferencesStack = createStackNavigator({
+  Preferences,
+  Preference,
 }, {
-  drawerWidth: 300,
-  drawerPosition: 'left',
-  drawerBackgroundColor: 'black',
-  contentOptions: {
-    activeTintColor: 'yellow',
-    inactiveTintColor: 'white',
-  },
+  navigationOptions,
 });
+
+const LinksStack = createDrawerNavigator(
+  {
+    Preferences: PreferencesStack,
+    "All Users": UserStack,
+  },
+  {
+    drawerWidth: 300,
+    drawerPosition: "left",
+    drawerBackgroundColor: "black",
+    contentOptions: {
+      activeTintColor: "yellow",
+      inactiveTintColor: "white"
+    },
+  },
+);
 
 LinksStack.navigationOptions = {
   tabBarLabel: 'Links',
