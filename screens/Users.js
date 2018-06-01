@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Image, Text } from 'react-native';
+import { Icon } from 'react-native-elements';
 import {
   Button,
   View,
@@ -20,10 +21,20 @@ const { get } = mainAPI;
 const { getUsers } = urls;
 
 class Users extends Component {
+  static navigationOptions = ({ navigation }) => ({
+    title: 'Users',
+    headerLeft: (
+      <Icon
+        name="menu"
+        onPress={() => navigation.openDrawer()}
+      />
+    ),
+  });
+
   state = {
     dataLoaded: false,
-    users: [],
-  }
+    users: []
+  };
 
   componentDidMount() {
     this.getUsers();
@@ -31,30 +42,31 @@ class Users extends Component {
 
   getUsers = () => {
     get(getUsers(), this.setUsers);
-  }
+  };
 
-  setUsers = (data) => {
+  setUsers = data => {
     const users = data.results;
     this.setState({ dataLoaded: true, users });
-  }
+  };
 
   render() {
-    const {
-      dataLoaded,
-      users,
-    } = this.state;
+    const { dataLoaded, users } = this.state;
 
     const { navigate } = this.props.navigation;
 
     if (!dataLoaded) {
-      return <View><Text>Loading</Text></View>;
+      return (
+        <View>
+          <Text>Loading</Text>
+        </View>
+      );
     }
 
     return (
       <View style={styles.paddingTop}>
         <DeckSwiper
           dataSource={users}
-          renderItem={(user) => {
+          renderItem={user => {
             const { name } = user;
             const fullName = `${name.first} ${name.last}`.toUpperCase();
 
@@ -70,15 +82,20 @@ class Users extends Component {
                   </Left>
                 </CardItem>
                 <CardItem cardBody>
-                  <Image style={{ height: 300, flex: 1 }} source={{ uri: user.picture.large }} />
+                  <Image
+                    style={{ height: 300, flex: 1 }}
+                    source={{ uri: user.picture.large }}
+                  />
                 </CardItem>
                 <CardItem>
                   <Button
                     style={styles.button}
-                    onPress={() => navigate('UserProfile', {
-                      title: fullName,
-                      user,
-                    })}
+                    onPress={() =>
+                      navigate("UserProfile", {
+                        title: fullName,
+                        user
+                      })
+                    }
                     block
                     success
                   >
@@ -87,8 +104,7 @@ class Users extends Component {
                 </CardItem>
               </Card>
             );
-          }
-          }
+          }}
         />
       </View>
     );

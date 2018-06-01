@@ -10,7 +10,7 @@ import {
 import TabBarIcon from '../components/TabBarIcon';
 
 import Preference from '../screens/Preference';
-import Preferences from "../screens/Preferences";
+import Preferences from '../screens/Preferences';
 import HomeScreen from '../screens/HomeScreen';
 import Users from '../screens/Users';
 import ScreenOne from '../screens/ScreenOne';
@@ -48,8 +48,6 @@ HomeStack.navigationOptions = {
 const UserStack = createStackNavigator({
   Users: Users,
   UserProfile: UserProfile,
-}, {
-  navigationOptions,
 });
 
 const PreferencesStack = createStackNavigator({
@@ -61,16 +59,16 @@ const PreferencesStack = createStackNavigator({
 
 const LinksStack = createDrawerNavigator(
   {
+    'All Users': UserStack,
     Preferences: PreferencesStack,
-    "All Users": UserStack,
   },
   {
     drawerWidth: 300,
-    drawerPosition: "left",
-    drawerBackgroundColor: "black",
+    drawerPosition: 'left',
+    drawerBackgroundColor: 'black',
     contentOptions: {
-      activeTintColor: "yellow",
-      inactiveTintColor: "white"
+      activeTintColor: 'yellow',
+      inactiveTintColor: 'white'
     },
   },
 );
