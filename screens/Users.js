@@ -45,7 +45,7 @@ class Users extends Component {
     get(getUsers(), this.setUsers);
   };
 
-  setUsers = data => {
+  setUsers = (data) => {
     const users = data.results;
     this.setState({ dataLoaded: true, users });
   };
@@ -63,7 +63,7 @@ class Users extends Component {
       <View style={styles.paddingTop}>
         <DeckSwiper
           dataSource={users}
-          renderItem={user => {
+          renderItem={(user) => {
             const { name } = user;
             const fullName = `${name.first} ${name.last}`.toUpperCase();
 
