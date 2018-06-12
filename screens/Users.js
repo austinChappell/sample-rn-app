@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Image, Text } from 'react-native';
 import { Icon } from 'react-native-elements';
 import {
@@ -21,6 +22,10 @@ import Loader from '../components/Loader';
 const { get } = mainAPI;
 const { getUsers } = urls;
 
+const propTypes = {
+  navigation: PropTypes.objectOf(PropTypes.any).isRequired,
+};
+
 class Users extends Component {
   static navigationOptions = ({ navigation }) => ({
     title: 'Users',
@@ -34,7 +39,7 @@ class Users extends Component {
 
   state = {
     dataLoaded: false,
-    users: []
+    users: [],
   };
 
   componentDidMount() {
@@ -88,9 +93,9 @@ class Users extends Component {
                   <Button
                     style={styles.button}
                     onPress={() =>
-                      navigate("UserProfile", {
+                      navigate('UserProfile', {
                         title: fullName,
-                        user
+                        user,
                       })
                     }
                     block
@@ -107,5 +112,7 @@ class Users extends Component {
     );
   }
 }
+
+Users.propTypes = propTypes;
 
 export default Users;

@@ -1,16 +1,9 @@
 import React from 'react';
 import {
-  Image,
-  Platform,
-  ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
-import { WebBrowser } from 'expo';
-
-import { MonoText } from '../components/StyledText';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -18,7 +11,6 @@ export default class HomeScreen extends React.Component {
   };
 
   render() {
-
     return (
       <View style={styles.container}>
         <Text style={styles.header}>Home Screen</Text>
@@ -38,7 +30,7 @@ export default class HomeScreen extends React.Component {
     // );
 
     // return (
-    //   <View style={styles.spreadContainer}>  
+    //   <View style={styles.spreadContainer}>
     //     <Text style={styles.header}>Home Screen</Text>
     //   </View>
     // );
@@ -48,9 +40,7 @@ export default class HomeScreen extends React.Component {
     //     <Text style={styles.header}>Home Screen</Text>
     //   </View>
     // );
-
   }
-
 }
 
 const styles = StyleSheet.create({
@@ -83,5 +73,5 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     fontSize: 20,
     textAlign: 'center',
-  }
+  },
 });

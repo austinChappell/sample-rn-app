@@ -1,10 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { DeviceEventEmitter, StyleSheet, Text, View } from 'react-native';
 import { Button } from 'native-base';
 import { Button as RNEButton } from 'react-native-elements';
 import { withNavigationFocus } from 'react-navigation';
 
 import styles from '../assets/styles';
+
+const propTypes = {
+  isFocused: PropTypes.bool.isRequired,
+  navigation: PropTypes.objectOf(PropTypes.any).isRequired,
+};
 
 class SettingsScreen extends React.Component {
   static navigationOptions = {
@@ -101,5 +107,7 @@ class SettingsScreen extends React.Component {
     );
   }
 }
+
+SettingsScreen.propTypes = propTypes;
 
 export default withNavigationFocus(SettingsScreen);

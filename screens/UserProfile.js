@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { StyleSheet, Text, View } from 'react-native';
 import { Avatar } from 'react-native-elements';
 import moment from 'moment';
 
 import styles from '../assets/styles';
+
+const propTypes = {
+  navigation: PropTypes.objectOf(PropTypes.any).isRequired,
+};
 
 class UserProfile extends Component {
   constructor(props) {
@@ -17,11 +22,7 @@ class UserProfile extends Component {
 
   render() {
     const { user } = this.state;
-    const {
-      location,
-      name,
-    } = user;
-    const fullName = `${name.first} ${name.last}`.toUpperCase();
+    const { location } = user;
 
     return (
       <View style={[StyleSheet.absoluteFill, styles.container]}>
@@ -60,5 +61,7 @@ class UserProfile extends Component {
     );
   }
 }
+
+UserProfile.propTypes = propTypes;
 
 export default UserProfile;

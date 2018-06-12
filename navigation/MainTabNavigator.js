@@ -1,6 +1,5 @@
 import React from 'react';
 import { Platform } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
 import {
   createDrawerNavigator,
   createStackNavigator,
@@ -19,7 +18,6 @@ import SettingsScreen from '../screens/SettingsScreen';
 import UserProfile from '../screens/UserProfile';
 
 const navigationOptions = ({ navigation }) => {
-  const { goBack } = navigation;
   const { params } = navigation.state;
   const title = params ? params.title : null;
   return {
@@ -46,8 +44,10 @@ HomeStack.navigationOptions = {
 };
 
 const UserStack = createStackNavigator({
-  Users: Users,
-  UserProfile: UserProfile,
+  Users,
+  UserProfile,
+}, {
+  navigationOptions,
 });
 
 const PreferencesStack = createStackNavigator({
@@ -68,7 +68,7 @@ const LinksStack = createDrawerNavigator(
     drawerBackgroundColor: 'black',
     contentOptions: {
       activeTintColor: 'yellow',
-      inactiveTintColor: 'white'
+      inactiveTintColor: 'white',
     },
   },
 );
@@ -85,8 +85,8 @@ LinksStack.navigationOptions = {
 
 const SettingsStack = createStackNavigator({
   Settings: SettingsScreen,
-  ScreenOne: ScreenOne,
-  ScreenTwo: ScreenTwo,
+  ScreenOne,
+  ScreenTwo,
 }, {
   // navigationOptions: {
   //   title: 'Something',

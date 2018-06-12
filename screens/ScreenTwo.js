@@ -1,10 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { DeviceEventEmitter, Text, View } from 'react-native';
 import { Button } from 'native-base';
 
 import styles from '../assets/styles';
 
-const ScreenTwo = props => {
+const propTypes = {
+  navigation: PropTypes.objectOf(PropTypes.any).isRequired,
+};
+
+const ScreenTwo = (props) => {
   const { goBack } = props.navigation;
   return (
     <View style={styles.container}>
@@ -30,7 +35,9 @@ const ScreenTwo = props => {
         <Text>Change BG Color</Text>
       </Button>
     </View>
-  )
-}
+  );
+};
+
+ScreenTwo.propTypes = propTypes;
 
 export default ScreenTwo;
