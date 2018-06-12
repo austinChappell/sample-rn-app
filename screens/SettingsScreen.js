@@ -63,7 +63,7 @@ class SettingsScreen extends React.Component {
           style={styles.button}
           block
           onPress={() => navigate(
-'ScreenOne',
+            'ScreenOne',
             { title: 'Screen One', message: 'Button One Pressed' },
           )}
           success
@@ -75,7 +75,7 @@ class SettingsScreen extends React.Component {
           style={styles.button}
           block
           onPress={() => navigate(
-'ScreenOne',
+            'ScreenOne',
             { title: 'Screen Two', message: 'Button Two Pressed' },
           )}
           warning
